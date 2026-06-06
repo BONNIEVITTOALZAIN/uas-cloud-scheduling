@@ -285,11 +285,11 @@ def run_optimization(df_clean, sample_size, max_vm, top_k_vm, node_limit, time_l
         "Skema": f"N={sample_size}, VM={max_vm}",
         "Sample_Size": sample_size,
         "Max_VM": max_vm,
-        "Makespan_S": final_result["makespan"],
-        "Energy_J": final_result["total_energy"],
-        "Cost_$": final_result["total_cost"],
-        "Objective_Score": final_result["objective_score"],
-        "Runtime_S": time.time() - search_start,
+        "Makespan_S": round(final_result["makespan"], 2),
+        "Energy_J": round(final_result["total_energy"], 4),
+        "Cost_$": round(final_result["total_cost"], 2),
+        "Objective_Score": round(final_result["objective_score"], 2),
+        "Runtime_S": round(time.time() - search_start, 2),
         "Nodes_Visited": stats["nodes_visited"],
         "Hit_Limit": stats["hit_limit"]
     }
