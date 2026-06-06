@@ -345,7 +345,17 @@ if st.sidebar.button("🚀 Jalankan Perbandingan", type="primary"):
             df_results = pd.DataFrame(results)
             
             st.subheader("📊 Tabel Hasil Perbandingan")
-            st.dataframe(df_results.style.highlight_min(subset=['Objective_Score', 'Makespan_S', 'Energy_J', 'Cost_$'], color='lightgreen'))
+            st.dataframe(
+                df_results.style
+                .format({
+                    "Makespan_S": "{:.2f}",
+                    "Energy_J": "{:.4f}",
+                    "Cost_$": "{:.2f}",
+                    "Objective_Score": "{:.2f}",
+                    "Runtime_S": "{:.2f}"
+                })
+                .highlight_min(subset=['Objective_Score', 'Makespan_S', 'Energy_J', 'Cost_$'], color='lightgreen')
+            )
             
             st.subheader("📈 Grafik Perbandingan")
             
